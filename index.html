@@ -8,6 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Consider hosting scripts locally for reliability -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     body {
@@ -28,7 +29,7 @@
       transition: transform 0.3s ease;
     }
     .hero-bg {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -65,8 +66,9 @@
       z-index: 1;
     }
     .hero-content {
-      z-index: 2;
+      z-index: 10;
       text-align: center;
+      position: relative;
     }
     .hero-glow-line {
       position: absolute;
@@ -79,7 +81,7 @@
       opacity: 0;
     }
     .section-padding {
-      padding: 6rem 1rem;
+      padding: 5rem 1rem;
       position: relative;
       overflow: hidden;
       background: linear-gradient(180deg, rgba(31, 41, 55, 0.75), rgba(76, 29, 149, 0.75));
@@ -96,17 +98,16 @@
       z-index: -1;
     }
     .card {
-      transition: transform 0.6s ease, box-shadow 0.6s ease, border 0.4s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.3s ease;
       background: linear-gradient(135deg, #1e293b, #2e1065);
       border-radius: 24px;
       overflow: hidden;
       border: 2px solid rgba(251, 146, 60, 0.4);
       position: relative;
-      transform: perspective(1200px) rotateY(0deg);
     }
     .card:hover {
-      transform: perspective(1200px) rotateY(8deg) translateY(-12px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(251, 146, 60, 0.6);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(251, 146, 60, 0.6);
       border: 2px solid #fb923c;
     }
     .card:hover .card-video {
@@ -123,10 +124,11 @@
       object-fit: cover;
       opacity: 0;
       transform: scale(1.1);
-      transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease, filter 0.4s ease;
     }
     .card img {
-      transition: opacity 0.5s ease;
+      transition: opacity 0.4s ease;
+      loading: lazy;
     }
     .card:hover img {
       opacity: 0;
@@ -140,7 +142,7 @@
       height: 100%;
       background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.4s ease;
     }
     .card:hover::after {
       opacity: 1;
@@ -153,7 +155,6 @@
     }
     nav.scrolled {
       background: linear-gradient(90deg, rgba(59, 130, 246, 1), rgba(107, 33, 168, 1));
-      transform: translateY(0);
     }
     .nav-menu {
       display: flex;
@@ -216,35 +217,24 @@
     .btn-primary {
       background: linear-gradient(45deg, #f97316, #facc15);
       color: #0f172a;
-      transition: all 0.5s ease;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
       border-radius: 14px;
       font-weight: 700;
       letter-spacing: 1.2px;
-      position: relative;
-      overflow: hidden;
+      display: inline-block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(251, 146, 60, 0.4);
-    }
-    .btn-primary::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-      transition: left 0.7s ease;
-    }
-    .btn-primary:hover::after {
-      left: 100%;
+      z-index: 10;
     }
     .btn-primary:hover {
       background: linear-gradient(45deg, #ea580c, #eab308);
-      transform: translateY(-6px) scale(1.1);
+      transform: translateY(-6px) scale(1.05);
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(251, 146, 60, 0.8);
     }
     .section-title {
       font-family: 'Cormorant Garamond', serif;
-      animation: fadeIn 1s ease-out;
+      animation: fadeIn 0.8s ease-out;
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       position: relative;
       color: #facc15;
@@ -263,7 +253,7 @@
       opacity: 0.85;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(25px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .hero-text {
@@ -276,14 +266,14 @@
     }
     .sticky-cta {
       position: fixed;
-      bottom: 2.5rem;
-      right: 2.5rem;
+      bottom: 2rem;
+      right: 2rem;
       z-index: 100;
-      animation: vibrantPulse 2.2s ease-in-out infinite;
+      animation: vibrantPulse 2s ease-in-out infinite;
     }
     @keyframes vibrantPulse {
       0% { transform: scale(1); box-shadow: 0 0 12px rgba(251, 146, 60, 0.6); }
-      50% { transform: scale(1.2); box-shadow: 0 0 25px rgba(251, 146, 60, 0.9); }
+      50% { transform: scale(1.15); box-shadow: 0 0 25px rgba(251, 146, 60, 0.9); }
       100% { transform: scale(1); box-shadow: 0 0 12px rgba(251, 146, 60, 0.6); }
     }
     .modal {
@@ -298,7 +288,7 @@
       justify-content: center;
       align-items: center;
       opacity: 0;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.5s ease;
     }
     .modal.active {
       display: flex;
@@ -310,7 +300,7 @@
       max-height: 88%;
       aspect-ratio: 16 / 9;
       transform: scale(0.7);
-      transition: transform 0.6s ease;
+      transition: transform 0.5s ease;
     }
     .modal.active .modal-content {
       transform: scale(1);
@@ -324,16 +314,16 @@
     }
     .close-modal {
       position: absolute;
-      top: -60px;
+      top: -50px;
       right: 15px;
       color: #fb923c;
-      font-size: 3rem;
+      font-size: 2.5rem;
       cursor: pointer;
       transition: all 0.4s ease;
     }
     .close-modal:hover {
       color: #facc15;
-      transform: scale(1.4) rotate(180deg);
+      transform: scale(1.3) rotate(180deg);
     }
     #particles-js {
       position: absolute;
@@ -406,14 +396,24 @@
         background-attachment: scroll;
       }
       .hero-bg {
-        height: 80vh;
+        min-height: 80vh;
       }
       .hero-text {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       .hero-subtext {
+        font-size: 0.9rem;
+        max-width: 95%;
+      }
+      .hero-content .flex {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        justify-content: center;
+      }
+      .btn-primary {
+        padding: 0.5rem 1rem;
         font-size: 0.85rem;
-        max-width: 90%;
+        min-width: 120px;
       }
       .nav-menu ul {
         display: none;
@@ -423,23 +423,23 @@
         left: 0;
         width: 100%;
         background: linear-gradient(90deg, rgba(59, 130, 246, 0.95), rgba(107, 33, 168, 0.95));
-        padding: 2rem;
+        padding: 1.5rem;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
       }
       .nav-menu.active ul {
         display: flex;
       }
       .nav-menu ul li {
-        margin: 1rem 0;
+        margin: 0.8rem 0;
       }
       .hamburger {
         display: flex;
       }
       .section-padding {
-        padding: 3.5rem 0.5rem;
+        padding: 3rem 0.5rem;
       }
       .section-title {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
       .section-title::after {
         width: 80px;
@@ -447,26 +447,18 @@
       .card {
         margin: 0 0.5rem;
       }
-      .btn-primary {
-        padding: 0.7rem 1.5rem;
-        font-size: 0.9rem;
-      }
-      .hero-content .flex {
-        flex-direction: column;
-        gap: 1rem;
-      }
       .sticky-cta {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
+        bottom: 1.2rem;
+        right: 1.2rem;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
       }
       .modal-content {
         max-width: 98%;
         max-height: 70%;
       }
       .carousel .card {
-        width: 250px;
+        width: 260px;
       }
     }
   </style>
@@ -480,15 +472,15 @@
 
   <!-- Navigation -->
   <nav class="fixed w-full z-30">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-3xl font-bold text-ivory-100 font-['Cormorant_Garamond'] logo">Minute Motion Creations</h1>
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-ivory-100 font-['Cormorant_Garamond'] logo">Minute Motion Creations</h1>
       <div class="nav-menu">
         <div class="hamburger">
           <span></span>
           <span></span>
           <span></span>
         </div>
-        <ul class="flex space-x-8 text-base font-medium">
+        <ul class="flex space-x-6 text-sm font-medium">
           <li><a href="#home" class="hover:text-gold-400">Home</a></li>
           <li><a href="#about" class="hover:text-gold-400">About</a></li>
           <li><a href="#portfolio" class="hover:text-gold-400">Portfolio</a></li>
@@ -505,18 +497,19 @@
 
   <!-- Home Section -->
   <section id="home" class="hero-bg parallax">
-    <video class="hero-video" autoplay muted loop playsinline>
+    <video class="hero-video" muted loop playsinline preload="metadata">
+      <!-- Replace with your actual video URL -->
       <source src="https://mixkit.co/free-stock-video/cinematic-city-skyline-at-sunset-4184/" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <div class="hero-content container mx-auto px-6">
-      <h2 class="text-4xl md:text-6xl font-extrabold mb-6 text-ivory-100 font-['Cormorant_Garamond'] hero-text">Visionary Cinema, Unleashed</h2>
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-ivory-100 font-['Cormorant_Garamond'] hero-text">Visionary Cinema, Unleashed</h2>
       <div class="hero-glow-line"></div>
-      <p class="text-base md:text-xl mb-8 max-w-3xl mx-auto text-ivory-200 hero-subtext">Minute Motion Creations crafts films and web series that captivate the world with bold storytelling and cinematic artistry.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="#portfolio" class="btn-primary px-8 py-3 text-base font-semibold">Explore Portfolio</a>
-        <button id="play-showreel" class="btn-primary px-8 py-3 text-base font-semibold">Watch Showreel</button>
-        <a href="#contact" class="btn-primary px-8 py-3 text-base font-semibold">Collaborate Now</a>
+      <p class="text-base md:text-lg mb-8 max-w-3xl mx-auto text-ivory-200 hero-subtext">Minute Motion Creations crafts films and web series that captivate the world with bold storytelling and cinematic artistry.</p>
+      <div class="flex justify-center space-x-4 flex-wrap">
+        <a href="#portfolio" class="btn-primary px-6 py-2.5 text-sm font-semibold" aria-label="Explore Portfolio">Explore Portfolio</a>
+        <button id="play-showreel" class="btn-primary px-6 py-2.5 text-sm font-semibold" aria-label="Watch Showreel">Watch Showreel</button>
+        <a href="#contact" class="btn-primary px-6 py-2.5 text-sm font-semibold" aria-label="Collaborate Now">Collaborate Now</a>
       </div>
     </div>
   </section>
@@ -530,7 +523,7 @@
   </div>
 
   <!-- Sticky CTA -->
-  <a href="#contact" class="sticky-cta btn-primary px-4 py-2 text-base font-semibold">Get in Touch</a>
+  <a href="#contact" class="sticky-cta btn-primary px-4 py-2 text-sm font-semibold">Get in Touch</a>
 
   <!-- About Us Section -->
   <section id="about" class="section-padding bg-charcoal-800">
@@ -554,31 +547,35 @@
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">Discover our visionary projects, crafted to inspire and captivate audiences worldwide.</p>
       <div class="carousel" id="portfolio-carousel">
         <div class="card">
-          <img src="Featurefilm.png" alt="Feature Film" class="w-full h-48 object-cover">
+          <!-- Replace 'Featurefilm.png' with your actual image -->
+          <img src="Featurefilm.png" alt="Feature Film" class="w-full h-48 object-cover" loading="lazy">
           <video class="card-video h-48" muted loop>
+            <!-- Replace with your actual video URL -->
             <source src="https://mixkit.co/free-stock-video/abstract-background-of-moving-and-spinning-lights-4986/" type="video/mp4">
           </video>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gold-400 mb-2">Feature Film: Untitled Epic</h3>
-            <p class="text-ivory-200 mb-2">A multi-lingual epic of passion and resilience, blending drama and action to redefine storytelling.</p>
-            <p class="text-sm text-ivory-200"><strong>Genre:</strong> Drama/Action</p>
-            <p class="text-sm text-ivory-200"><strong>Status:</strong> In Production</p>
-            <p class="text-sm text-ivory-200"><strong>Director:</strong> To Be Announced</p>
-            <a href="#contact" class="text-gold-400 text-sm hover:underline">Learn More</a>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-gold-400 mb-2">Feature Film: Untitled Epic</h3>
+            <p class="text-ivory-200 mb-2 text-sm">A multi-lingual epic of passion and resilience, blending drama and action to redefine storytelling.</p>
+            <p class="text-xs text-ivory-200"><strong>Genre:</strong> Drama/Action</p>
+            <p class="text-xs text-ivory-200"><strong>Status:</strong> In Production</p>
+            <p class="text-xs text-ivory-200"><strong>Director:</strong> To Be Announced</p>
+            <a href="#contact" class="text-gold-400 text-xs hover:underline">Learn More</a>
           </div>
         </div>
         <div class="card">
-          <img src="Webseries.png" alt="Web Series" class="w-full h-48 object-cover">
+          <!-- Replace 'Webseries.png' with your actual image -->
+          <img src="Webseries.png" alt="Web Series" class="w-full h-48 object-cover" loading="lazy">
           <video class="card-video h-48" muted loop>
+            <!-- Replace with your actual video URL -->
             <source src="https://mixkit.co/free-stock-video/abstract-background-of-colored-spinning-lights-4987/" type="video/mp4">
           </video>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gold-400 mb-2">Web Series: Untitled Thriller</h3>
-            <p class="text-ivory-200 mb-2">A groundbreaking series exploring universal themes of identity and survival in a futuristic world.</p>
-            <p class="text-sm text-ivory-200"><strong>Genre:</strong> Thriller/Sci-Fi</p>
-            <p class="text-sm text-ivory-200"><strong>Status:</strong> Pre-Production</p>
-            <p class="text-sm text-ivory-200"><strong>Platform:</strong> To Be Announced</p>
-            <a href="#contact" class="text-gold-400 text-sm hover:underline">Learn More</a>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold text-gold-400 mb-2">Web Series: Untitled Thriller</h3>
+            <p class="text-ivory-200 mb-2 text-sm">A groundbreaking series exploring universal themes of identity and survival in a futuristic world.</p>
+            <p class="text-xs text-ivory-200"><strong>Genre:</strong> Thriller/Sci-Fi</p>
+            <p class="text-xs text-ivory-200"><strong>Status:</strong> Pre-Production</p>
+            <p class="text-xs text-ivory-200"><strong>Platform:</strong> To Be Announced</p>
+            <a href="#contact" class="text-gold-400 text-xs hover:underline">Learn More</a>
           </div>
         </div>
       </div>
@@ -594,35 +591,35 @@
     <div class="container mx-auto px-6">
       <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Our Expertise</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card p-6">
+        <div class="card p-5">
           <svg class="service-icon" viewBox="0 0 24 24"><path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-6 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"/><path d="M12 10c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z"/></svg>
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Film Production</h3>
-          <p class="text-ivory-200">Comprehensive production services, from pre-production to final cut, delivering cinematic excellence.</p>
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Film Production</h3>
+          <p class="text-ivory-200 text-sm">Comprehensive production services, from pre-production to final cut, delivering cinematic excellence.</p>
         </div>
-        <div class="card p-6">
+        <div class="card p-5">
           <svg class="service-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm-7 12c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"/></svg>
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Post-Production</h3>
-          <p class="text-ivory-200">Advanced editing, VFX, color grading, and sound design for a polished masterpiece.</p>
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Post-Production</h3>
+          <p class="text-ivory-200 text-sm">Advanced editing, VFX, color grading, and sound design for a polished masterpiece.</p>
         </div>
-        <div class="card p-6">
+        <div class="card p-5">
           <svg class="service-icon" viewBox="0 0 24 24"><path d="M3 3v18h18V3H3zm16 16H5V5h14v14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Script Development</h3>
-          <p class="text-ivory-200">Crafting compelling narratives that resonate with global audiences.</p>
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Script Development</h3>
+          <p class="text-ivory-200 text-sm">Crafting compelling narratives that resonate with global audiences.</p>
         </div>
-        <div class="card p-6">
+        <div class="card p-5">
           <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"/><path d="M12 6c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6z"/></svg>
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Casting & Talent</h3>
-          <p class="text-ivory-200">Curating exceptional talent to bring your vision to life.</p>
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Casting & Talent</h3>
+          <p class="text-ivory-200 text-sm">Curating exceptional talent to bring your vision to life.</p>
         </div>
-        <div class="card p-6">
+        <div class="card p-5">
           <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zM12 6l-5 5h10l-5-5z"/></svg>
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Location Scouting</h3>
-          <p class="text-ivory-200">Discovering iconic locations to elevate your storytelling.</p>
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Location Scouting</h3>
+          <p class="text-ivory-200 text-sm">Discovering iconic locations to elevate your storytelling.</p>
         </div>
-        <div class="card p-6">
+        <div class="card p-5">
           <svg class="service-icon" viewBox="0 0 24 24"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zM10 10H8v4h2v-4zm6 0h-2v4h2v-4z"/></svg>
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Distribution Support</h3>
-          <p class="text-ivory-200">Strategic partnerships and planning to bring your content to global platforms.</p>
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Distribution Support</h3>
+          <p class="text-ivory-200 text-sm">Strategic partnerships and planning to bring your content to global platforms.</p>
         </div>
       </div>
     </div>
@@ -634,20 +631,20 @@
       <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Awards & Recognition</h2>
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">Celebrating our achievements in cinematic excellence.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card p-6">
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Best Feature Film</h3>
-          <p class="text-ivory-200">International Film Festival, 2024</p>
-          <p class="text-sm text-ivory-200">Recognized for outstanding storytelling and cinematography.</p>
+        <div class="card p-5">
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Best Feature Film</h3>
+          <p class="text-ivory-200 text-sm">International Film Festival, 2024</p>
+          <p class="text-xs text-ivory-200">Recognized for outstanding storytelling and cinematography.</p>
         </div>
-        <div class="card p-6">
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Audience Choice Award</h3>
-          <p class="text-ivory-200">Global Web Series Awards, 2023</p>
-          <p class="text-sm text-ivory-200">Voted by audiences for impactful narrative and production quality.</p>
+        <div class="card p-5">
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Audience Choice Award</h3>
+          <p class="text-ivory-200 text-sm">Global Web Series Awards, 2023</p>
+          <p class="text-xs text-ivory-200">Voted by audiences for impactful narrative and production quality.</p>
         </div>
-        <div class="card p-6">
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Best Director</h3>
-          <p class="text-ivory-200">Mumbai Film Festival, 2022</p>
-          <p class="text-sm text-ivory-200">Honored for visionary direction in a feature film.</p>
+        <div class="card p-5">
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Best Director</h3>
+          <p class="text-ivory-200 text-sm">Mumbai Film Festival, 2022</p>
+          <p class="text-xs text-ivory-200">Honored for visionary direction in a feature film.</p>
         </div>
       </div>
     </div>
@@ -658,17 +655,17 @@
     <div class="container mx-auto px-6">
       <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">What Our Partners Say</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card p-6">
-          <p class="text-base italic mb-3 text-ivory-200">"Minute Motion Creations elevated our project with their visionary artistry and unmatched professionalism."</p>
-          <p class="text-gold-400 font-semibold">Amit Sharma, Producer</p>
+        <div class="card p-5">
+          <p class="text-sm italic mb-3 text-ivory-200">"Minute Motion Creations elevated our project with their visionary artistry and unmatched professionalism."</p>
+          <p class="text-gold-400 font-semibold text-sm">Amit Sharma, Producer</p>
         </div>
-        <div class="card p-6">
-          <p class="text-base italic mb-3 text-ivory-200">"Their passion for cinema is infectious. A truly world-class team that delivers beyond expectations."</p>
-          <p class="text-gold-400 font-semibold">Priya Desai, Director</p>
+        <div class="card p-5">
+          <p class="text-sm italic mb-3 text-ivory-200">"Their passion for cinema is infectious. A truly world-class team that delivers beyond expectations."</p>
+          <p class="text-gold-400 font-semibold text-sm">Priya Desai, Director</p>
         </div>
-        <div class="card p-6">
-          <p class="text-base italic mb-3 text-ivory-200">"Collaborating with Minute Motion Creations was a game-changer. Their creativity and dedication are unparalleled."</p>
-          <p class="text-gold-400 font-semibold">Rahul Mehta, Screenwriter</p>
+        <div class="card p-5">
+          <p class="text-sm italic mb-3 text-ivory-200">"Collaborating with Minute Motion Creations was a game-changer. Their creativity and dedication are unparalleled."</p>
+          <p class="text-gold-400 font-semibold text-sm">Rahul Mehta, Screenwriter</p>
         </div>
       </div>
     </div>
@@ -680,23 +677,23 @@
       <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Latest Updates</h2>
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">Stay updated with our latest projects, behind-the-scenes insights, and industry news.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card p-6">
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Behind the Scenes: Untitled Epic</h3>
-          <p class="text-ivory-200 mb-2">A sneak peek into the making of our upcoming feature film, showcasing the passion behind every frame.</p>
-          <p class="text-sm text-ivory-200">Posted: July 10, 2025</p>
-          <a href="#contact" class="text-gold-400 text-sm hover:underline">Read More</a>
+        <div class="card p-5">
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Behind the Scenes: Untitled Epic</h3>
+          <p class="text-ivory-200 mb-2 text-sm">A sneak peek into the making of our upcoming feature film, showcasing the passion behind every frame.</p>
+          <p class="text-xs text-ivory-200">Posted: July 10, 2025</p>
+          <a href="#contact" class="text-gold-400 text-xs hover:underline">Read More</a>
         </div>
-        <div class="card p-6">
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">Web Series Pre-Production Update</h3>
-          <p class="text-ivory-200 mb-2">Exciting updates on our sci-fi thriller series, including casting news and set designs.</p>
-          <p class="text-sm text-ivory-200">Posted: June 25, 2025</p>
-          <a href="#contact" class="text-gold-400 text-sm hover:underline">Read More</a>
+        <div class="card p-5">
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">Web Series Pre-Production Update</h3>
+          <p class="text-ivory-200 mb-2 text-sm">Exciting updates on our sci-fi thriller series, including casting news and set designs.</p>
+          <p class="text-xs text-ivory-200">Posted: June 25, 2025</p>
+          <a href="#contact" class="text-gold-400 text-xs hover:underline">Read More</a>
         </div>
-        <div class="card p-6">
-          <h3 class="text-xl font-semibold mb-3 text-gold-400">The Future of Cinema</h3>
-          <p class="text-ivory-200 mb-2">Our thoughts on emerging trends in global filmmaking and how we’re adapting.</p>
-          <p class="text-sm text-ivory-200">Posted: June 1, 2025</p>
-          <a href="#contact" class="text-gold-400 text-sm hover:underline">Read More</a>
+        <div class="card p-5">
+          <h3 class="text-lg font-semibold mb-3 text-gold-400">The Future of Cinema</h3>
+          <p class="text-ivory-200 mb-2 text-sm">Our thoughts on emerging trends in global filmmaking and how we’re adapting.</p>
+          <p class="text-xs text-ivory-200">Posted: June 1, 2025</p>
+          <a href="#contact" class="text-gold-400 text-xs hover:underline">Read More</a>
         </div>
       </div>
     </div>
@@ -709,10 +706,10 @@
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">Partner with us to bring your cinematic vision to life. Reach out for collaborations, inquiries, or media kits.</p>
       <div class="flex flex-col md:flex-row justify-between gap-6">
         <div class="md:w-1/3">
-          <p class="mb-4 text-ivory-200"><strong>Email:</strong> contact@minutemotioncreations.com</p>
-          <p class="mb-4 text-ivory-200"><strong>Phone:</strong> +91-9137022283</p>
-          <p class="mb-4 text-ivory-200"><strong>Office:</strong> Thane, Mumbai, Maharashtra, India</p>
-          <p class="mb-4 text-ivory-200"><strong>Press Inquiries:</strong> <a href="/media-kit" class="text-gold-400 hover:underline">Download Media Kit</a></p>
+          <p class="mb-4 text-ivory-200 text-sm"><strong>Email:</strong> contact@minutemotioncreations.com</p>
+          <p class="mb-4 text-ivory-200 text-sm"><strong>Phone:</strong> +91-9137022283</p>
+          <p class="mb-4 text-ivory-200 text-sm"><strong>Office:</strong> Thane, Mumbai, Maharashtra, India</p>
+          <p class="mb-4 text-ivory-200 text-sm"><strong>Press Inquiries:</strong> <a href="/media-kit" class="text-gold-400 hover:underline">Download Media Kit</a></p>
           <div class="flex space-x-4">
             <a href="https://instagram.com/minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.149 3.252-1.691 4.771-4.919 4.919-1.265.058-1.645.069-4.849.069s-3.584-.012-4.849-.069c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.849s.012-3.584.069-4.849c.148-3.252 1.691-4.771 4.919-4.919 1.265-.058 1.645-.069 4.849-.069m0-2.163C8.741 0 8.332.014 7.052.072 2.849.228.228 2.849.073 7.052.014 8.332 0 8.741 0 12s.014 3.668.072 4.948c.155 4.205 2.774 6.824 6.979 6.979 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.205-.155 6.824-2.774 6.979-6.979.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-4.205-2.774-6.824-6.979-6.979C15.668.014 15.259 0 12 0z"/><path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162s1.865-4.162 4.162-4.162 4.162 1.865 4.162 4.162-1.865 4.162-4.162 4.162zm6.406-11.406c0 .796-.645 1.441-1.441 1.441s-1.441-.645-1.441-1.441.645-1.441 1.441-1.441 1.441.645 1.441 1.441z"/></svg></a>
             <a href="https://youtube.com/@minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.016 3.016 0 0 0 .505 6.186C0 8.058 0 12 0 12s0 3.942.505 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.942 24 12 24 12s0-3.942-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
@@ -722,16 +719,16 @@
         <div class="md:w-2/3">
           <!-- Replace 'xoqryvld' with your actual Formspree ID -->
           <form action="https://formspree.io/f/xoqryvld" method="POST" class="space-y-4">
-            <input type="text" name="name" placeholder="Your Name" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
-            <input type="email" name="email" placeholder="Your Email" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
-            <select name="project-type" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
+            <input type="text" name="name" placeholder="Your Name" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" required>
+            <input type="email" name="email" placeholder="Your Email" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" required>
+            <select name="project-type" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" required>
               <option value="" disabled selected>Select Project Type</option>
               <option value="film">Film Production</option>
               <option value="web-series">Web Series</option>
               <option value="other">Other Collaboration</option>
             </select>
-            <textarea name="message" placeholder="Your Message" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" rows="5" required></textarea>
-            <button type="submit" class="btn-primary px-8 py-3 text-base font-semibold">Send Message</button>
+            <textarea name="message" placeholder="Your Message" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" rows="5" required></textarea>
+            <button type="submit" class="btn-primary px-6 py-2.5 text-sm font-semibold">Send Message</button>
           </form>
         </div>
       </div>
@@ -746,12 +743,12 @@
       <div class="max-w-2xl mx-auto">
         <!-- Replace 'xoqryvld' with your actual Formspree ID -->
         <form action="https://formspree.io/f/xoqryvld" method="POST" class="space-y-4">
-          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
-          <input type="email" name="email" placeholder="Your Email" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
-          <input type="text" name="role" placeholder="Role (e.g., Writer, Actor, Director)" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
-          <input type="url" name="portfolio" placeholder="Portfolio Link" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base">
-          <textarea name="message" placeholder="Why do you want to join us?" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" rows="5" required></textarea>
-          <button type="submit" class="btn-primary px-8 py-3 text-base font-semibold">Submit Application</button>
+          <input type="text" name="name" placeholder="Your Name" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" required>
+          <input type="email" name="email" placeholder="Your Email" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" required>
+          <input type="text" name="role" placeholder="Role (e.g., Writer, Actor, Director)" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" required>
+          <input type="url" name="portfolio" placeholder="Portfolio Link" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm">
+          <textarea name="message" placeholder="Why do you want to join us?" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" rows="5" required></textarea>
+          <button type="submit" class="btn-primary px-6 py-2.5 text-sm font-semibold">Submit Application</button>
         </form>
       </div>
     </div>
@@ -765,23 +762,23 @@
       <div class="max-w-md mx-auto">
         <!-- Replace 'xoqryvld' with your actual Formspree ID -->
         <form action="https://formspree.io/f/xoqryvld" method="POST" class="space-y-4">
-          <input type="email" name="email" placeholder="Your Email" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
-          <button type="submit" class="btn-primary w-full px-8 py-3 text-base font-semibold">Subscribe Now</button>
+          <input type="email" name="email" placeholder="Your Email" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-sm" required>
+          <button type="submit" class="btn-primary w-full px-6 py-2.5 text-sm font-semibold">Subscribe Now</button>
         </form>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-charcoal-900 py-8">
+  <footer class="bg-charcoal-900 py-6">
     <div class="container mx-auto px-6 text-center">
-      <div class="flex justify-center space-x-6 mb-6">
+      <div class="flex justify-center space-x-6 mb-4">
         <a href="https://instagram.com/minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.149 3.252-1.691 4.771-4.919 4.919-1.265.058-1.645.069-4.849.069s-3.584-.012-4.849-.069c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.849s.012-3.584.069-4.849c.148-3.252 1.691-4.771 4.919-4.919 1.265-.058 1.645-.069 4.849-.069m0-2.163C8.741 0 8.332.014 7.052.072 2.849.228.228 2.849.073 7.052.014 8.332 0 8.741 0 12s.014 3.668.072 4.948c.155 4.205 2.774 6.824 6.979 6.979 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.205-.155 6.824-2.774 6.979-6.979.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-4.205-2.774-6.824-6.979-6.979C15.668.014 15.259 0 12 0z"/><path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162s1.865-4.162 4.162-4.162 4.162 1.865 4.162 4.162-1.865 4.162-4.162 4.162zm6.406-11.406c0 .796-.645 1.441-1.441 1.441s-1.441-.645-1.441-1.441.645-1.441 1.441-1.441 1.441.645 1.441 1.441z"/></svg></a>
         <a href="https://youtube.com/@minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.016 3.016 0 0 0 .505 6.186C0 8.058 0 12 0 12s0 3.942.505 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.942 24 12 24 12s0-3.942-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
         <a href="https://facebook.com/minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
       </div>
-      <p class="text-sm text-ivory-200 mb-2">© 2025 Minute Motion Creations. All rights reserved.</p>
-      <div class="flex justify-center space-x-4 text-sm text-ivory-200">
+      <p class="text-xs text-ivory-200 mb-2">© 2025 Minute Motion Creations. All rights reserved.</p>
+      <div class="flex justify-center space-x-4 text-xs text-ivory-200">
         <a href="#privacy" class="hover:text-gold-400">Privacy Policy</a>
         <span>|</span>
         <a href="#terms" class="hover:text-gold-400">Terms of Use</a>
@@ -793,37 +790,63 @@
 
   <!-- Scripts -->
   <script>
-    // Particles.js Config (Optimized for mobile)
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: window.innerWidth > 768 ? 80 : 40, density: { enable: true, value_area: 1200 } },
-        color: { value: ['#f97316', '#facc15', '#d946ef', '#ffffff', '#2563eb'] },
-        shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
-        opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1.2, opacity_min: 0.2 } },
-        size: { value: 3.5, random: true, anim: { enable: true, speed: 2.5, size_min: 0.5 } },
-        line_linked: { enable: false },
-        move: { enable: true, speed: 3, direction: 'none', random: true, straight: false, out_mode: 'out' }
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-        modes: { repulse: { distance: 150, duration: 0.6 }, push: { particles_nb: 4 } }
-      },
-      retina_detect: true
-    });
+    // Error Boundary for Debugging
+    window.onerror = function(message, source, lineno, colno, error) {
+      console.error(`Error: ${message} at ${source}:${lineno}:${colno}`);
+    };
 
-    // Smooth Scroll
+    // Debounce Utility
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Particles.js Config (Optimized)
+    if (typeof particlesJS !== 'undefined') {
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: window.innerWidth > 768 ? 50 : 20, density: { enable: true, value_area: 1000 } },
+          color: { value: ['#f97316', '#facc15', '#d946ef', '#ffffff', '#2563eb'] },
+          shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
+          opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.2 } },
+          size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.5 } },
+          line_linked: { enable: false },
+          move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: { onhover: { enable: window.innerWidth > 768, mode: 'repulse' }, onclick: { enable: false }, resize: true },
+          modes: { repulse: { distance: 100, duration: 0.5 } }
+        },
+        retina_detect: true
+      });
+    } else {
+      console.warn('Particles.js not loaded.');
+    }
+
+    // Smooth Scroll with Fallback
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          console.warn(`Target ${targetId} not found.`);
+        }
       });
     });
 
     // Navbar Scroll Effect
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', () => {
       const nav = document.querySelector('nav');
       if (window.scrollY > 50) {
         nav.classList.add('scrolled');
@@ -835,53 +858,60 @@
     // Hamburger Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-
-    // Close Menu on Link Click
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
       });
-    });
+      document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        });
+      });
+    }
 
     // Video Modal
     const showreelBtn = document.getElementById('play-showreel');
     const modal = document.getElementById('video-modal');
     const closeModal = document.querySelector('.close-modal');
-    const iframe = modal.querySelector('iframe');
-
-    showreelBtn.addEventListener('click', () => {
-      modal.classList.add('active');
-      iframe.src = iframe.src; // Reset video
-    });
-
-    closeModal.addEventListener('click', () => {
-      modal.classList.remove('active');
-      iframe.src = ''; // Stop video
-    });
-
-    modal.addEventListener('click', e => {
-      if (e.target === modal) {
+    const iframe = modal?.querySelector('iframe');
+    if (showreelBtn && modal && closeModal && iframe) {
+      showreelBtn.addEventListener('click', () => {
+        modal.classList.add('active');
+        iframe.src = iframe.src || 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+      });
+      closeModal.addEventListener('click', () => {
         modal.classList.remove('active');
-        iframe.src = ''; // Stop video
-      }
-    });
+        iframe.src = '';
+      });
+      modal.addEventListener('click', e => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          iframe.src = '';
+        }
+      });
+    } else {
+      console.warn('Video modal elements missing.');
+    }
 
     // Carousel Navigation
     function scrollCarousel(carouselId, offset) {
       const carousel = document.getElementById(carouselId);
-      carousel.scrollBy({ left: offset, behavior: 'smooth' });
+      if (carousel) {
+        carousel.scrollBy({ left: offset, behavior: 'smooth' });
+      } else {
+        console.warn(`Carousel ${carouselId} not found.`);
+      }
     }
 
     // Video Hover Play
     document.querySelectorAll('.card').forEach(card => {
       const video = card.querySelector('.card-video');
       if (video) {
-        card.addEventListener('mouseenter', () => video.play());
+        card.addEventListener('mouseenter', () => {
+          video.play().catch(err => console.error('Video play failed:', err));
+        });
         card.addEventListener('mouseleave', () => {
           video.pause();
           video.currentTime = 0;
@@ -889,83 +919,85 @@
       }
     });
 
-    // Scroll Progress Bar
-    window.addEventListener('scroll', () => {
+    // Scroll Progress Bar with Debounce
+    window.addEventListener('scroll', debounce(() => {
       const progressBar = document.querySelector('.progress-bar');
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.pageYOffset / totalHeight) * 100;
-      progressBar.style.transform = `scaleX(${progress / 100})`;
-    });
+      if (progressBar) {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (window.pageYOffset / totalHeight) * 100;
+        progressBar.style.transform = `scaleX(${progress / 100})`;
+      }
+    }, 15));
 
     // GSAP Animations
-    gsap.registerPlugin(ScrollTrigger);
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      heroTl
+        .from('.hero-text', { opacity: 0, y: 20, duration: 0.4 })
+        .from('.hero-glow-line', { opacity: 0, width: 0, duration: 0.4 }, '-=0.3')
+        .from('.hero-subtext', { opacity: 0, y: 10, duration: 0.4 }, '-=0.3')
+        .from('.hero-content .btn-primary', { opacity: 0, y: 10, duration: 0.4 }, '-=0.2');
 
-    // Hero Section Animation Timeline
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    heroTl
-      .from('.hero-text', { opacity: 0, y: 25, duration: 1.2 })
-      .from('.hero-glow-line', { opacity: 0, width: 0, duration: 1 }, '-=0.8')
-      .from('.hero-subtext', { opacity: 0, y: 15, duration: 1 }, '-=0.6')
-      .from('.hero-content .btn-primary', { opacity: 0, y: 10, stagger: 0.2, duration: 0.8 }, '-=0.4');
-
-    // Hero Text Parallax
-    gsap.to('.hero-text', {
-      y: -20,
-      scrollTrigger: {
-        trigger: '.hero-bg',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.5,
-      }
-    });
-    gsap.to('.hero-subtext', {
-      y: -15,
-      scrollTrigger: {
-        trigger: '.hero-bg',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.75,
-      }
-    });
-
-    // Logo Animation
-    gsap.from('.logo', {
-      opacity: 0,
-      scale: 0.8,
-      rotation: 10,
-      duration: 1,
-      ease: 'elastic.out(1, 0.5)'
-    });
-
-    // Staggered Card Animations
-    gsap.utils.toArray('.card').forEach((card, i) => {
-      gsap.from(card, {
-        opacity: 0,
-        y: 50,
-        rotationY: 10,
-        duration: 1,
-        delay: i * 0.2,
+      gsap.to('.hero-text', {
+        y: -15,
         scrollTrigger: {
-          trigger: card,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
+          trigger: '.hero-bg',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.5,
         }
       });
-    });
-
-    // Section Title Animations
-    gsap.utils.toArray('.section-title').forEach(sectionTitle => {
-      gsap.from(sectionTitle, {
-        opacity: 0,
-        scale: 0.9,
-        duration: 1,
+      gsap.to('.hero-subtext', {
+        y: -10,
         scrollTrigger: {
-          trigger: sectionTitle,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
+          trigger: '.hero-bg',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.75,
         }
       });
-    });
+
+      gsap.from('.logo', {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        ease: 'elastic.out(1, 0.5)'
+      });
+
+      gsap.utils.toArray('.card').forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          delay: i * 0.15,
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        });
+      });
+
+      gsap.utils.toArray('.section-title').forEach(sectionTitle => {
+        gsap.from(sectionTitle, {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: sectionTitle,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        });
+      });
+    } else {
+      console.warn('GSAP or ScrollTrigger not loaded. Buttons should still be visible due to CSS fallback.');
+      document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.style.opacity = '1';
+        btn.style.transform = 'none';
+      });
+    }
   </script>
 </body>
 </html>
