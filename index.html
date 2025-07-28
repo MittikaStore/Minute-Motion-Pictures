@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minute Motion Pictures</title>
+  <title>Minute Motion Creations</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -34,8 +34,8 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
-      background: url('https://www.transparenttextures.com/patterns/film.png') repeat, linear-gradient(45deg, #3b82f6, #a855f7, #f97316);
-      animation: gradientShift 15s ease infinite;
+      background: url('https://www.transparenttextures.com/patterns/film.png') repeat, linear-gradient(45deg, #2563eb, #d946ef, #f97316);
+      animation: gradientShift 12s ease infinite;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -50,7 +50,7 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
-      filter: brightness(0.9) contrast(1.2);
+      filter: brightness(1.1) contrast(1.2);
       transform: scale(1.1);
       transition: transform 0.6s ease;
     }
@@ -61,7 +61,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15));
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
       z-index: 1;
     }
     .hero-content {
@@ -73,7 +73,7 @@
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 200px;
+      width: 220px;
       height: 3px;
       background: linear-gradient(to right, transparent, #fb923c, transparent);
       opacity: 0;
@@ -82,7 +82,7 @@
       padding: 6rem 1rem;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(30, 41, 59, 0.8), rgba(76, 29, 149, 0.8));
+      background: linear-gradient(180deg, rgba(31, 41, 55, 0.75), rgba(76, 29, 149, 0.75));
     }
     .section-padding::before {
       content: '';
@@ -98,20 +98,21 @@
     .card {
       transition: transform 0.6s ease, box-shadow 0.6s ease, border 0.4s ease;
       background: linear-gradient(135deg, #1e293b, #2e1065);
-      border-radius: 20px;
+      border-radius: 24px;
       overflow: hidden;
-      border: 2px solid rgba(251, 146, 60, 0.3);
+      border: 2px solid rgba(251, 146, 60, 0.4);
       position: relative;
       transform: perspective(1200px) rotateY(0deg);
     }
     .card:hover {
       transform: perspective(1200px) rotateY(8deg) translateY(-12px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(251, 146, 60, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(251, 146, 60, 0.6);
       border: 2px solid #fb923c;
     }
     .card:hover .card-video {
       opacity: 1;
       transform: scale(1);
+      filter: brightness(1.1);
     }
     .card-video {
       position: absolute;
@@ -122,7 +123,7 @@
       object-fit: cover;
       opacity: 0;
       transform: scale(1.1);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
     }
     .card img {
       transition: opacity 0.5s ease;
@@ -145,13 +146,13 @@
       opacity: 1;
     }
     nav {
-      background: linear-gradient(90deg, rgba(31, 41, 55, 0.9), rgba(107, 33, 168, 0.9));
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.85), rgba(107, 33, 168, 0.85));
       backdrop-filter: blur(15px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       transition: all 0.5s ease;
     }
     nav.scrolled {
-      background: linear-gradient(90deg, rgba(31, 41, 55, 1), rgba(107, 33, 168, 1));
+      background: linear-gradient(90deg, rgba(59, 130, 246, 1), rgba(107, 33, 168, 1));
       transform: translateY(0);
     }
     .nav-menu {
@@ -188,9 +189,9 @@
       position: relative;
       padding-bottom: 6px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       color: #f1f5f9;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     }
     nav a:hover {
       color: #facc15;
@@ -218,10 +219,10 @@
       transition: all 0.5s ease;
       border-radius: 14px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 10px rgba(251, 146, 60, 0.3);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(251, 146, 60, 0.4);
     }
     .btn-primary::after {
       content: '';
@@ -238,7 +239,7 @@
     }
     .btn-primary:hover {
       background: linear-gradient(45deg, #ea580c, #eab308);
-      transform: translateY(-8px) scale(1.15);
+      transform: translateY(-6px) scale(1.1);
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(251, 146, 60, 0.8);
     }
     .section-title {
@@ -247,6 +248,8 @@
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
       position: relative;
       color: #facc15;
+      font-weight: 900;
+      letter-spacing: 0.5px;
     }
     .section-title::after {
       content: '';
@@ -383,14 +386,14 @@
     .bg-charcoal-800 { background: linear-gradient(135deg, #1e293b, #2e1065); }
     .bg-charcoal-700 { background: #1f2937; }
     .social-icon {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       fill: #f1f5f9;
       transition: fill 0.3s ease, transform 0.3s ease;
     }
     .social-icon:hover {
       fill: #facc15;
-      transform: scale(1.3);
+      transform: scale(1.4) rotate(5deg);
     }
     .service-icon {
       width: 40px;
@@ -419,7 +422,7 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: linear-gradient(90deg, rgba(31, 41, 55, 0.95), rgba(107, 33, 168, 0.95));
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.95), rgba(107, 33, 168, 0.95));
         padding: 2rem;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
       }
@@ -478,7 +481,7 @@
   <!-- Navigation -->
   <nav class="fixed w-full z-30">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-3xl font-bold text-ivory-100 font-['Cormorant_Garamond'] logo">Minute Motion Pictures</h1>
+      <h1 class="text-3xl font-bold text-ivory-100 font-['Cormorant_Garamond'] logo">Minute Motion Creations</h1>
       <div class="nav-menu">
         <div class="hamburger">
           <span></span>
@@ -507,9 +510,9 @@
       Your browser does not support the video tag.
     </video>
     <div class="hero-content container mx-auto px-6">
-      <h2 class="text-4xl md:text-6xl font-bold mb-6 text-ivory-100 font-['Cormorant_Garamond'] hero-text">Visionary Cinema, Unleashed</h2>
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-6 text-ivory-100 font-['Cormorant_Garamond'] hero-text">Visionary Cinema, Unleashed</h2>
       <div class="hero-glow-line"></div>
-      <p class="text-base md:text-xl mb-8 max-w-3xl mx-auto text-ivory-200 hero-subtext">Minute Motion Pictures crafts films and web series that captivate the world with bold storytelling and cinematic artistry.</p>
+      <p class="text-base md:text-xl mb-8 max-w-3xl mx-auto text-ivory-200 hero-subtext">Minute Motion Creations crafts films and web series that captivate the world with bold storytelling and cinematic artistry.</p>
       <div class="flex justify-center space-x-4">
         <a href="#portfolio" class="btn-primary px-8 py-3 text-base font-semibold">Explore Portfolio</a>
         <button id="play-showreel" class="btn-primary px-8 py-3 text-base font-semibold">Watch Showreel</button>
@@ -532,9 +535,9 @@
   <!-- About Us Section -->
   <section id="about" class="section-padding bg-charcoal-800">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">Our Story</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Our Story</h2>
       <div class="max-w-3xl mx-auto text-base space-y-4 text-ivory-200">
-        <p>Minute Motion Pictures, headquartered in Thane, Mumbai, is a premier production house dedicated to creating films and web series that resonate globally. We blend passion, innovation, and cinematic excellence to tell stories that inspire and provoke thought.</p>
+        <p>Minute Motion Creations, headquartered in Thane, Mumbai, is a premier production house dedicated to creating films and web series that resonate globally. We blend passion, innovation, and cinematic excellence to tell stories that inspire and provoke thought.</p>
         <p><strong>Vision:</strong> To redefine global cinema with universal narratives that transcend borders.</p>
         <p><strong>Mission:</strong> To deliver bold, high-quality content that pushes creative boundaries and sets new industry standards.</p>
         <p><strong>Values:</strong> Artistry, Authenticity, Collaboration, Excellence.</p>
@@ -547,7 +550,7 @@
   <!-- Portfolio Section -->
   <section id="portfolio" class="section-padding">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">Our Portfolio</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Our Portfolio</h2>
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">Discover our visionary projects, crafted to inspire and captivate audiences worldwide.</p>
       <div class="carousel" id="portfolio-carousel">
         <div class="card">
@@ -589,7 +592,7 @@
   <!-- Services Section -->
   <section id="services" class="section-padding bg-charcoal-800">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">Our Expertise</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Our Expertise</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="card p-6">
           <svg class="service-icon" viewBox="0 0 24 24"><path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-6 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"/><path d="M12 10c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z"/></svg>
@@ -628,7 +631,7 @@
   <!-- Awards Section -->
   <section id="awards" class="section-padding bg-charcoal-800">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">Awards & Recognition</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Awards & Recognition</h2>
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">Celebrating our achievements in cinematic excellence.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="card p-6">
@@ -653,10 +656,10 @@
   <!-- Testimonials Section -->
   <section id="testimonials" class="section-padding bg-charcoal-800">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">What Our Partners Say</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">What Our Partners Say</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="card p-6">
-          <p class="text-base italic mb-3 text-ivory-200">"Minute Motion Pictures elevated our project with their visionary artistry and unmatched professionalism."</p>
+          <p class="text-base italic mb-3 text-ivory-200">"Minute Motion Creations elevated our project with their visionary artistry and unmatched professionalism."</p>
           <p class="text-gold-400 font-semibold">Amit Sharma, Producer</p>
         </div>
         <div class="card p-6">
@@ -664,7 +667,7 @@
           <p class="text-gold-400 font-semibold">Priya Desai, Director</p>
         </div>
         <div class="card p-6">
-          <p class="text-base italic mb-3 text-ivory-200">"Collaborating with Minute Motion Pictures was a game-changer. Their creativity and dedication are unparalleled."</p>
+          <p class="text-base italic mb-3 text-ivory-200">"Collaborating with Minute Motion Creations was a game-changer. Their creativity and dedication are unparalleled."</p>
           <p class="text-gold-400 font-semibold">Rahul Mehta, Screenwriter</p>
         </div>
       </div>
@@ -674,7 +677,7 @@
   <!-- Blog Section -->
   <section id="blog" class="section-padding">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">Latest Updates</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Latest Updates</h2>
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">Stay updated with our latest projects, behind-the-scenes insights, and industry news.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="card p-6">
@@ -702,18 +705,18 @@
   <!-- Contact Section -->
   <section id="contact" class="section-padding">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">Let’s Create Together</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Let’s Create Together</h2>
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">Partner with us to bring your cinematic vision to life. Reach out for collaborations, inquiries, or media kits.</p>
       <div class="flex flex-col md:flex-row justify-between gap-6">
         <div class="md:w-1/3">
-          <p class="mb-4 text-ivory-200"><strong>Email:</strong> contact@minutemotionpictures.com</p>
+          <p class="mb-4 text-ivory-200"><strong>Email:</strong> contact@minutemotioncreations.com</p>
           <p class="mb-4 text-ivory-200"><strong>Phone:</strong> +91-9137022283</p>
           <p class="mb-4 text-ivory-200"><strong>Office:</strong> Thane, Mumbai, Maharashtra, India</p>
           <p class="mb-4 text-ivory-200"><strong>Press Inquiries:</strong> <a href="/media-kit" class="text-gold-400 hover:underline">Download Media Kit</a></p>
           <div class="flex space-x-4">
-            <a href="https://instagram.com/minutemotionpictures" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.148 3.252-1.691 4.771-4.919 4.919-1.265.058-1.645.069-4.849.069s-3.584-.012-4.849-.069c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.849s.012-3.584.069-4.849c.148-3.252.148 1.691 1.691 4.919 4.919 4.918.058 1.265.069 1.645 4.849 4.849s-.012 3.584-.069 0c-.148-3.252-1.691-4.771-4.919-4.919-1.265-.058-1.645-.069-4.849-.069zM12 0C8.741 0 8.317.015 7.052.072.073 2.847.228 12 .228s-.155 2.825-.072 7.052c-.057 10.175 2.774 2.774 9.948 9.948 2.825-.012 3.668-.072 0l-4.948-.072c-4.205-.155-6.979-2.774-6.979-6.979C3.052 8.332 3 8.741 0 12c.014-.409-.072-3.668 0-4.948 8.741 0 8.317-.022 9.058-.072z"/><path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.162 12 18.162 18.162 15.403 18.162 12 15.403 5.838 12 5.838zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162S9.703 7.838 12 7.838s4.162 1.865 4.162 4.162S14.297 16.162 12 16.162zM18.406 4.594c0 .796-.645 1.441-1.441 1.441s-1.441-.645-1.441-1.441.645-1.441 1.441-1.441 1.441.645 1.441 1.441z"/></svg></a>
-            <a href="https://youtube.com/@minutemotionpictures" class="social-icon"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.016 3.016 0 0 0 .505 6.186C0 8.058 0 12 0 12s0 3.942.505 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.942 24 12 24 12s0-3.942-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-            <a href="https://facebook.com/minutemotionpictures" class="social-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.634c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://instagram.com/minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.149 3.252-1.691 4.771-4.919 4.919-1.265.058-1.645.069-4.849.069s-3.584-.012-4.849-.069c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.849s.012-3.584.069-4.849c.148-3.252 1.691-4.771 4.919-4.919 1.265-.058 1.645-.069 4.849-.069m0-2.163C8.741 0 8.332.014 7.052.072 2.849.228.228 2.849.073 7.052.014 8.332 0 8.741 0 12s.014 3.668.072 4.948c.155 4.205 2.774 6.824 6.979 6.979 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.205-.155 6.824-2.774 6.979-6.979.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-4.205-2.774-6.824-6.979-6.979C15.668.014 15.259 0 12 0z"/><path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162s1.865-4.162 4.162-4.162 4.162 1.865 4.162 4.162-1.865 4.162-4.162 4.162zm6.406-11.406c0 .796-.645 1.441-1.441 1.441s-1.441-.645-1.441-1.441.645-1.441 1.441-1.441 1.441.645 1.441 1.441z"/></svg></a>
+            <a href="https://youtube.com/@minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.016 3.016 0 0 0 .505 6.186C0 8.058 0 12 0 12s0 3.942.505 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.942 24 12 24 12s0-3.942-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://facebook.com/minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
           </div>
         </div>
         <div class="md:w-2/3">
@@ -727,7 +730,7 @@
               <option value="web-series">Web Series</option>
               <option value="other">Other Collaboration</option>
             </select>
-            <textarea name="message" placeholder="Your Message" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-ivory-400 text-base" rows="5" required></textarea>
+            <textarea name="message" placeholder="Your Message" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" rows="5" required></textarea>
             <button type="submit" class="btn-primary px-8 py-3 text-base font-semibold">Send Message</button>
           </form>
         </div>
@@ -738,11 +741,11 @@
   <!-- Careers Section -->
   <section id="careers" class="section-padding bg-charcoal-800">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">Join Our Team</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Join Our Team</h2>
       <p class="text-base mb-8 text-center max-w-xl mx-auto text-ivory-200">We’re seeking bold filmmakers, writers, actors, and crew members to shape the future of cinema. Current openings: Director, Screenwriter, Cinematographer, Editor.</p>
       <div class="max-w-2xl mx-auto">
         <!-- Replace 'xoqryvld' with your actual Formspree ID -->
-        <form action="https://formspree.io/fake_form_id" method="POST" class="space-y-4">
+        <form action="https://formspree.io/f/xoqryvld" method="POST" class="space-y-4">
           <input type="text" name="name" placeholder="Your Name" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
           <input type="email" name="email" placeholder="Your Email" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
           <input type="text" name="role" placeholder="Role (e.g., Writer, Actor, Director)" class="w-full p-3 bg-charcoal-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-400 text-ivory-100 text-base" required>
@@ -757,7 +760,7 @@
   <!-- Newsletter Section -->
   <section id="newsletter" class="section-padding bg-charcoal-800">
     <div class="container mx-auto px-6">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8 text-center text-ivory-100">Stay in the Loop</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-extrabold mb-8 text-center text-ivory-100">Stay in the Loop</h2>
       <p class="text-base mb-6 text-center max-w-xl mx-auto text-ivory-200">Subscribe to our newsletter for exclusive updates, behind-the-scenes content, and industry insights.</p>
       <div class="max-w-md mx-auto">
         <!-- Replace 'xoqryvld' with your actual Formspree ID -->
@@ -773,11 +776,11 @@
   <footer class="bg-charcoal-900 py-8">
     <div class="container mx-auto px-6 text-center">
       <div class="flex justify-center space-x-6 mb-6">
-        <a href="https://instagram.com/minutemotionpictures" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.148 3.252-1.691 4.771-4.919 4.919-1.265.058-1.645.069-4.849.069-3.204 0-3.584-.012-4.849-.069-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.849 0-3.204.012-3.584.069-4.849.148-3.252 1.691-4.771 4.919-4.919 1.265-.058 1.645-.069 4.849-.069zM12 0C8.741 0 8.332.014 7.052.072 2.849.227.228 2.846.073 7.052.014 8.332 0 8.741 0 12s.014 3.668.072 4.948c.155 4.205 2.774 6.824 6.979 6.979 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.205-.155 6.824-2.774 6.979-6.979.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-4.205-2.774-6.824-6.979-6.979C15.668.014 15.259 0 12 0z"/><path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.162 12 18.162s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162S9.703 7.838 12 7.838s4.162 1.865 4.162 4.162S14.297 16.162 12 16.162zM18.406 4.594c0 .796-.645 1.441-1.441 1.441s-1.441-.645-1.441-1.441.645-1.441 1.441-1.441 1.441.645 1.441 1.441z"/></svg></a>
-        <a href="https://youtube.com/@minutemotionpictures" class="social-icon"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.016 3.016 0 0 0 .505 6.186C0 8.058 0 12 0 12s0 3.942.505 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.942 24 12 24 12s0-3.942-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-        <a href="https://facebook.com/minutemotionpictures" class="social-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://instagram.com/minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.149 3.252-1.691 4.771-4.919 4.919-1.265.058-1.645.069-4.849.069s-3.584-.012-4.849-.069c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.849s.012-3.584.069-4.849c.148-3.252 1.691-4.771 4.919-4.919 1.265-.058 1.645-.069 4.849-.069m0-2.163C8.741 0 8.332.014 7.052.072 2.849.228.228 2.849.073 7.052.014 8.332 0 8.741 0 12s.014 3.668.072 4.948c.155 4.205 2.774 6.824 6.979 6.979 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c4.205-.155 6.824-2.774 6.979-6.979.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-4.205-2.774-6.824-6.979-6.979C15.668.014 15.259 0 12 0z"/><path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162s1.865-4.162 4.162-4.162 4.162 1.865 4.162 4.162-1.865 4.162-4.162 4.162zm6.406-11.406c0 .796-.645 1.441-1.441 1.441s-1.441-.645-1.441-1.441.645-1.441 1.441-1.441 1.441.645 1.441 1.441z"/></svg></a>
+        <a href="https://youtube.com/@minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.016 3.016 0 0 0 .505 6.186C0 8.058 0 12 0 12s0 3.942.505 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.942 24 12 24 12s0-3.942-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        <a href="https://facebook.com/minutemotioncreations" class="social-icon"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
       </div>
-      <p class="text-sm text-ivory-200 mb-2">© 2025 Minute Motion Pictures. All rights reserved.</p>
+      <p class="text-sm text-ivory-200 mb-2">© 2025 Minute Motion Creations. All rights reserved.</p>
       <div class="flex justify-center space-x-4 text-sm text-ivory-200">
         <a href="#privacy" class="hover:text-gold-400">Privacy Policy</a>
         <span>|</span>
@@ -794,7 +797,7 @@
     particlesJS('particles-js', {
       particles: {
         number: { value: window.innerWidth > 768 ? 80 : 40, density: { enable: true, value_area: 1200 } },
-        color: { value: ['#f97316', '#facc15', '#a855f7', '#ffffff', '#3b82f6'] },
+        color: { value: ['#f97316', '#facc15', '#d946ef', '#ffffff', '#2563eb'] },
         shape: { type: 'circle', stroke: { width: 0, color: '#000000' } },
         opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1.2, opacity_min: 0.2 } },
         size: { value: 3.5, random: true, anim: { enable: true, speed: 2.5, size_min: 0.5 } },
@@ -937,8 +940,8 @@
     // Staggered Card Animations
     gsap.utils.toArray('.card').forEach((card, i) => {
       gsap.from(card, {
-        opacity: 0},
-        y: {50},
+        opacity: 0,
+        y: 50,
         rotationY: 10,
         duration: 1,
         delay: i * 0.2,
@@ -951,7 +954,7 @@
     });
 
     // Section Title Animations
-    gsap.utils.toArray('.section-title').forEach sectionTitle => {
+    gsap.utils.toArray('.section-title').forEach(sectionTitle => {
       gsap.from(sectionTitle, {
         opacity: 0,
         scale: 0.9,
